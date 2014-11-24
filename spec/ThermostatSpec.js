@@ -12,4 +12,16 @@ describe("Thermostat", function() {
   it('starts in energy saving mode', function(){
     expect(thermostat.energySavingMode).toEqual(true)
   })
+
+  describe('maximum temperature', function(){
+    it('is 25 degrees if energy saving mode is enabled', function(){
+      expect(thermostat.maximumTemperature()).toEqual(25);
+    })
+
+    it('is 30 degrees if energy saving mode is disabled', function(){
+      thermostat.energySavingMode = false;
+      expect(thermostat.maximumTemperature()).toEqual(30);
+    })
+  })
+
 });
