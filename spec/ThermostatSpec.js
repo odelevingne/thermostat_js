@@ -35,4 +35,20 @@ describe("Thermostat", function() {
     })
   })
 
+  describe('cooling the thermostat', function(){
+      it('reduces the temperature by 1 degree', function() {
+        thermostat.setPoint = 18;
+        thermostat.cooler();
+        expect(thermostat.setPoint).toEqual(17);
+      });
+  })
+
+  describe('warming the thermostat', function(){
+    it('increases the temperature by 1 degree', function(){
+      thermostat.setPoint = 23;
+      thermostat.warmer();
+      expect(thermostat.setPoint).toEqual(24)
+    })
+  })
+
 });

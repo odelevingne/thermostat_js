@@ -12,3 +12,11 @@ Thermostat.prototype.minimumTemperature = function() {
 	if(this.energySavingMode) return 10;
 	return 15;
 }
+
+Thermostat.prototype.cooler = function() {
+  this.setPoint -= 1;
+};
+
+Thermostat.prototype.warmer = function() {
+	this.setPoint += 1;
+}
