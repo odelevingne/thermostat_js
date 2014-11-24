@@ -24,4 +24,15 @@ describe("Thermostat", function() {
     })
   })
 
+  describe('minimumTemperature', function(){
+    it('is 10 degrees if energy saving mode is enabled', function(){
+      expect(thermostat.minimumTemperature()).toEqual(10);
+    })
+
+    it('is 15 degrees if energy saving mode is disabled', function(){
+      thermostat.energySavingMode = false;
+      expect(thermostat.minimumTemperature()).toEqual(15);
+    })
+  })
+
 });
