@@ -127,7 +127,7 @@ describe("Thermostat", function() {
     it('resets the temperature to 20 degrees', function(){
       thermostat.setPoint = 24;
       thermostat.reset();
-      expect(thermostat.setPoint()).toEqual(20);
+      expect(thermostat.setPoint).toEqual(20);
     })
   })
 });
