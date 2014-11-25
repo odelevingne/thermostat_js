@@ -95,7 +95,7 @@ describe("Thermostat", function() {
         expect(thermostat.setPoint).toEqual(30);
       })
 
-      it('cannot increase the temperature when the current temperature is 20 or above', function(){
+      it('cannot increase the temperature when the current temperature is 30 or above', function(){
         thermostat.energySavingMode = false;
         thermostat.setPoint = 30;
         thermostat.warmer;
@@ -104,4 +104,30 @@ describe("Thermostat", function() {
     })
   })
 
+  describe('status', function(){
+
+    it('is "good" if the current temperature is <= 18', function(){
+      thermostat.setPoint = 18;
+      expect(thermostat.status()).toEqual('good');
+    })
+
+    it('is "average" if the current temperature is <= 25', function(){
+      thermostat.setPoint = 22;
+      expect(thermostat.status()).toEqual('average');
+    })
+
+
+    it('is "poor" if the current temperature is > 25', function(){
+      thermostat.setPoint = 26;
+      expect(thermostat.status()).toEqual('poor');
+    })
+  })
+
+  describe('reset button', function(){
+    it('resets the temperature to 20 degrees', function(){
+      thermostat.setPoint = 24;
+      thermostat.reset();
+      expect(thermostat.setPoint()).toEqual(20);
+    })
+  })
 });

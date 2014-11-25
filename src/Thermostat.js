@@ -22,3 +22,9 @@ Thermostat.prototype.warmer = function() {
 	if(this.setPoint >= this.maximumTemperature()) return;
 		this.setPoint += 1;
 }
+
+Thermostat.prototype.status = function(){
+	if(this.setPoint <= 18) return('good');
+	else if(this.setPoint <= 25) return('average');
+	return("poor");
+}
