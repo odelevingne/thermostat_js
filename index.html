@@ -4,10 +4,17 @@
 		<meta charset='utf8'>
 		<title>Thermostat</title>
 		<style>
-			body	{
+			
+		#setpoint.poor {
+      color: red;
+    }
+    #setpoint.average {
+      color: orange;
+    }
+    #setpoint.good {
+      color: green;
+    }
 
-
-			}
 		</style>
 	</head>
 	<body>
@@ -21,6 +28,9 @@
 		<button id='warmer'>↑</button>
 		<button id='cooler'>↓</button>
 
+		<label for='esm'>Energy saving mode</label>
+    <input type='checkbox' id='esm' checked>
+
 		<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
 		<script src='src/Thermostat.js'></script>
 		<script>
@@ -28,6 +38,8 @@
 		var thermostat = new Thermostat();
 		function updateDisplay() {
 			$('#setpoint').html(thermostat.setPoint)
+			$('#setpoint').attr('class', '').addClass(
+      	thermostat.status());
 		}
 
 		$(document).ready(function(){
@@ -42,6 +54,10 @@
 				thermostat.cooler();
 				updateDisplay();
 			})
+
+			$('#esm').on('change',function() {
+        thermostat.energySavingMode = $(this).prop('checked');
+      });
 		})
 		</script>
 	</body>
