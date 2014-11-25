@@ -36,12 +36,23 @@ describe("Thermostat", function() {
   })
 
   describe('cooling the thermostat', function(){
-      it('reduces the temperature by 1 degree', function() {
+
+    describe('when energy saving mode is on', function(){
+
+      it('reduces the temperature by 1 degree if the current temperature is above 10', function() {
         thermostat.setPoint = 18;
         thermostat.cooler();
         expect(thermostat.setPoint).toEqual(17);
       });
-  })
+
+      it('cannot reduce the temperature if the current temperature is 10 or below', function(){
+        thermostat.setPoint = 10;
+        thermostat.cooler();
+        expect(thermostat.setPoint).toEqual(10);
+      });
+    });
+  });
+
 
   describe('warming the thermostat', function(){
     it('increases the temperature by 1 degree', function(){

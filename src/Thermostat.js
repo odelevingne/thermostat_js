@@ -14,7 +14,8 @@ Thermostat.prototype.minimumTemperature = function() {
 }
 
 Thermostat.prototype.cooler = function() {
-  this.setPoint -= 1;
+  if(this.setPoint <= this.minimumTemperature()) return; 
+  	this.setPoint -= 1;
 };
 
 Thermostat.prototype.warmer = function() {
