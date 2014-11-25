@@ -51,14 +51,56 @@ describe("Thermostat", function() {
         expect(thermostat.setPoint).toEqual(10);
       });
     });
+
+    describe('when energy saving mode is off', function(){
+
+      it('reduces the temperature by 1 degree if the current temperature is 16 or above', function(){
+        thermostat.energySavingMode = false;
+        thermostat.cooler();
+        expect(thermostat.setPoint).toEqual(19)
+      })
+
+      it('cannot reduce the temperature if the current temperature is 15 or below', function(){
+        thermostat.setPoint = 15;
+        thermostat.energySavingMode = false;
+        thermostat.cooler();
+        expect(thermostat.setPoint).toEqual(15)
+      })
+    })
   });
 
 
   describe('warming the thermostat', function(){
-    it('increases the temperature by 1 degree', function(){
-      thermostat.setPoint = 23;
-      thermostat.warmer();
-      expect(thermostat.setPoint).toEqual(24)
+    describe('when energy saving mode is on', function(){
+
+      it('increases the temperature by 1 degree if the current temperature is 24 or below', function(){
+        thermostat.setPoint = 23;
+        thermostat.warmer();
+        expect(thermostat.setPoint).toEqual(24)
+      })
+
+      it('cannot increase the temperature when the current temperature is 25 or above', function(){
+        thermostat.setPoint = 25;
+        thermostat.warmer();
+        expect(thermostat.setPoint).toEqual(25)
+      })
+    })
+    
+    describe('when energy saving mode is off', function(){
+
+      it('increases the temperature by 1 degree if the current temperature is 29 or below', function(){
+        thermostat.energySavingMode = false;
+        thermostat.setPoint = 29;
+        thermostat.warmer();
+        expect(thermostat.setPoint).toEqual(30);
+      })
+
+      it('cannot increase the temperature when the current temperature is 20 or above', function(){
+        thermostat.energySavingMode = false;
+        thermostat.setPoint = 30;
+        thermostat.warmer;
+        expect(thermostat.setPoint).toEqual(30)
+      })
     })
   })
 

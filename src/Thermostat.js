@@ -19,5 +19,6 @@ Thermostat.prototype.cooler = function() {
 };
 
 Thermostat.prototype.warmer = function() {
-	this.setPoint += 1;
+	if(this.setPoint >= this.maximumTemperature()) return;
+		this.setPoint += 1;
 }
