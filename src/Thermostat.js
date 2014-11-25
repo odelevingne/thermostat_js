@@ -16,6 +16,7 @@ Thermostat.prototype.minimumTemperature = function() {
 Thermostat.prototype.cooler = function() {
   if(this.setPoint <= this.minimumTemperature()) return; 
   	this.setPoint -= 1;
+  if(this.setPoint > this.maximumTemperature()) this.setPoint = this.maximumTemperature();
 };
 
 Thermostat.prototype.warmer = function() {

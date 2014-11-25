@@ -104,6 +104,14 @@ describe("Thermostat", function() {
     })
   })
 
+  describe('energy saving mode', function(){
+    it('resets the the set point to 25 when current set point is > 25 and energy saving mode is enabled', function(){
+      thermostat.setPoint = 28;
+      thermostat.cooler();
+      expect(thermostat.setPoint).toEqual(25);
+    })
+  })
+
   describe('status', function(){
 
     it('is "good" if the current temperature is <= 18', function(){
