@@ -1,5 +1,4 @@
 #Thermostat
-Week 7 project at [Makers Academy]
 A thermostat control program in Javascript 
 
 ## Learning Objectives: 
@@ -31,5 +30,4 @@ Learning to use Jasmine for Behaviour Driven Development (BDD)
 - You can reset the setpoint to 20 by clicking the reset button
 - The thermostat colours the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red
 
-[Makers Academy]:http://www.makersacademy.com/
 [Jasmine]:http://jasmine.github.io/2.0/introduction.html
